@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import inspect
 from abc import ABCMeta
 from types import FunctionType
 from typing import TYPE_CHECKING, Any, ClassVar, TypeAlias
@@ -47,7 +48,7 @@ class StringsMeta(ABCMeta):
         local_namespace = {_type.__name__: _type for _type in cls.__types__}
 
         # iterate by annotations
-        for key, annotation in cls.__annotations__.items():
+        for key, annotation in inspect.get_annotations(cls).items():
             if key in mcs.__ignored_keys__:
                 continue
 

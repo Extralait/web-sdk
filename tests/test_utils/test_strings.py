@@ -2,7 +2,7 @@ from typing import NewType
 
 import pytest
 
-from web_sdk.utils.strings import Strings
+from web_sdk.utils.strings import Strings, _TTypes
 
 Index = NewType("Index", str)
 Column = NewType("Column", str)
@@ -17,6 +17,15 @@ def test_regular_strings():
     assert FooStrings.key2 == "key2"
     assert list(FooStrings) == ["key1", "key2"]
     assert list(FooStrings) == FooStrings.__values__
+
+
+def test_ignored_keys_strings():
+    class FooStrings(Strings):
+        __types__: _TTypes = (str, Column)
+
+        key1: Column
+
+    assert "__types__" not in FooStrings.__keys__
 
 
 def test_raise_wrong_type_with_future_annotation_stings():
