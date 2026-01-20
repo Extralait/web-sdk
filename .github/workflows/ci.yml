@@ -1,3 +1,4 @@
+# ci.yml, adopted from pydantic Makefile (https://github.com/pydantic/pydantic/blob/main/.github/workflows/ci.yml).
 name: CI
 on:
   push:
