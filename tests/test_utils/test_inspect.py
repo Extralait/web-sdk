@@ -1,3 +1,5 @@
+import sys
+
 import pytest
 
 from web_sdk.utils.inspect import get_params_with_values
@@ -21,8 +23,12 @@ def test_get_params_with_values_minimal_test():
     with pytest.raises(TypeError, match="missing a required argument: 'arg1'"):
         assert get_params_with_values(_function, ["arg1"])
 
-    with pytest.raises(ValueError, match="'arg2' is not in list"):
-        assert get_params_with_values(_function, ["arg2"], arg1_value)
+    if sys.version_info < (3, 14):
+        with pytest.raises(ValueError, match="'arg2' is not in list"):
+            assert get_params_with_values(_function, ["arg2"], arg1_value)
+    else:
+        with pytest.raises(ValueError, match=r"list.index\(x\): x not in list"):
+            assert get_params_with_values(_function, ["arg2"], arg1_value)
 
 
 class TestGetParamsWithValues:
