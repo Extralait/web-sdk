@@ -15,7 +15,7 @@ from tests.clients.base.responses import (
     BaseTestRetryErrorResponse,
 )
 from tests.clients.base.types import ModelForTest, Settings
-from web_sdk.contrib.pydantic.model import ProxyModel
+from web_sdk.contrib.pydantic.models import ProxyModel
 from web_sdk.core.bases import BaseClient
 from web_sdk.core.exceptions import (
     FailureRequestSDKException,

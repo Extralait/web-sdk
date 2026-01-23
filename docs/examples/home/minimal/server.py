@@ -1,19 +1,7 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
 
 # Create FastAPI app
 app = FastAPI(root_path="/api/v1")
-
-
-# Response short data structure
-class ShortData(BaseModel):
-    pk: int
-    q: bool | None = None
-
-
-# Response data structure
-class Data(ShortData):
-    nested: ShortData
 
 
 @app.get("/data/{pk}/info")

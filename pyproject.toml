@@ -5,14 +5,17 @@ build-backend = 'hatchling.build'
 
 [project]
 name = 'web-sdk'
-description = 'SDK constructor with pydantic schemas'
+description = 'WebSDK is a library for quickly and easily creating SDKs for integration with third-party APIs.'
 authors = [
+    { name = 'Abbakumov Valerii', email = 'tehnolog1999@gmail.com' },
+]
+maintainers = [
     { name = 'Abbakumov Valerii', email = 'tehnolog1999@gmail.com' },
 ]
 license = 'MIT'
 license-files = ['LICENSE']
 classifiers = [
-    'Development Status :: 1 - Planning',
+    'Development Status :: 3 - Alpha',
     'Programming Language :: Python',
     'Programming Language :: Python :: Implementation :: CPython',
     'Programming Language :: Python :: Implementation :: PyPy',
@@ -27,9 +30,13 @@ classifiers = [
     'Intended Audience :: Information Technology',
     'Operating System :: OS Independent',
     'Framework :: Pydantic',
+    'Framework :: Pydantic :: 2',
     'Topic :: Software Development :: Libraries :: Python Modules',
     'Topic :: Internet',
 ]
+keywords = ["web", "sdk", "soap", "rest", "api", "web-sdk", "web-api", "extralait"]
+
+
 requires-python = '>=3.10'
 dependencies = [
     'typing-extensions>=4.14.1',
@@ -40,9 +47,11 @@ dependencies = [
 dynamic = ['version', 'readme']
 
 [project.urls]
-Homepage = 'https://github.com/ExtralaitTeam/web-sdk'
-Documentation = 'https://github.com/ExtralaitTeam/web-sdk'
-Source = 'https://github.com/ExtralaitTeam/web-sdk'
+Homepage = 'https://github.com/extralait-web/web-sdk'
+Documentation = 'https://github.com/extralait-web/web-sdk'
+Source = 'https://github.com/extralait-web/web-sdk'
+Issues = "https://github.com/extralait-web/web-sdk/issues"
+Changelog = "https://github.com/extralait-web/web-sdk/blob/master/CHANGELOG.md"
 
 [project.optional-dependencies]
 xml = [
@@ -117,6 +126,21 @@ include = [
     '/Makefile',
     '/web_sdk',
     '/tests',
+]
+
+[tool.hatch.metadata.hooks.fancy-pypi-readme]
+content-type = 'text/markdown'
+# construct the PyPI readme from README.md and HISTORY.md
+fragments = [
+    { path = 'README.md' },
+    { text = "\n## Changelog\n\n" },
+    { path = 'CHANGELOG.md', pattern = '(.+?)<!-- package description limit -->' },
+]
+# convert GitHub issue/PR numbers and handles to links
+substitutions = [
+    { pattern = '(\s+)#(\d+)', replacement = '\1[#\2](https://github.com/pydantic/pydantic/issues/\2)' },
+    { pattern = '(\s+)@([\w\-]+)', replacement = '\1[@\2](https://github.com/\2)' },
+    { pattern = '@@', replacement = '@' },
 ]
 
 [tool.uv]

@@ -3,7 +3,7 @@ import os
 from pydantic import computed_field
 from typing_extensions import TypedDict
 
-from web_sdk.contrib.pydantic.model import PydanticModel
+from web_sdk.contrib.pydantic.models import PydanticModel
 from web_sdk.core.bases.rest.kwargs import RestFieldsKwargs
 from web_sdk.core.bases.soap.settings import BaseSoapSettings
 

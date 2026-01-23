@@ -2,8 +2,8 @@ site_name: Web SDK
 site_description: "WebSDK is a library for quickly and easily creating SDKs for integration with third-party APIs."
 site_author: "Extralait"
 site_url: ""
-repo_name: ExtralaitTeam/web-sdk
-repo_url: https://github.com/ExtralaitTeam/web-sdk
+repo_name: extralait-web/web-sdk
+repo_url: https://github.com/extralait-web/web-sdk
 extra_css:
   - stylesheets/extra.css
 edit_uri: edit/master/docs/
@@ -59,6 +59,7 @@ nav:
   - Get Started:
       - Welcome: index.md
       - Installation: pages/get_started/installation.md
+      - Backends: pages/get_started/backends.md
   - Backends:
       - Sync:
           - REST requests: pages/backends/rest/requests/index.md
@@ -66,6 +67,70 @@ nav:
       - Async:
           - REST httpx: pages/backends/rest/httpx/index.md
           - SOAP httpx: pages/backends/soap/httpx/index.md
+  - API Documentation:
+      - Settings: api/settings.md
+      - Core:
+          - Interfaces:
+              - Clients: api/core/interfaces/clients.md
+              - Methods: api/core/interfaces/methods.md
+              - Services: api/core/interfaces/services.md
+          - Bases:
+              - REST:
+                  - Clients: api/core/bases/rest/clients.md
+                  - Methods: api/core/bases/rest/methods.md
+                  - Context: api/core/bases/rest/context.md
+                  - Kwargs: api/core/bases/rest/kwargs.md
+                  - Schemas: api/core/bases/rest/schemas.md
+              - SOAP:
+                  - Clients: api/core/bases/soap/clients.md
+                  - Methods: api/core/bases/soap/methods.md
+                  - Schemas: api/core/bases/soap/settings.md
+                  - Context: api/core/bases/soap/context.md
+                  - Kwargs: api/core/bases/soap/kwargs.md
+                  - Schemas: api/core/bases/soap/schemas.md
+                  - Schemas: api/core/bases/soap/files.md
+                  - Schemas: api/core/bases/soap/transports.md
+              - Clients: api/core/bases/clients.md
+              - Methods: api/core/bases/methods.md
+              - Services: api/core/bases/services.md
+              - Settings: api/core/bases/settings.md
+          - Fields:
+              - Fields: api/core/fields/fields.md
+              - Parts: api/core/fields/parts.md
+          - Exceptions: api/core/exceptions.md
+          - Context: api/core/context.md
+          - Kwargs: api/core/kwargs.md
+          - Utils: api/core/utils.md
+      - Backends:
+          - Requests:
+              - REST:
+                  - Clients: api/core/backends/requests/rest/clients.md
+                  - Services: api/core/backends/requests/rest/services.md
+                  - Methods: api/core/backends/requests/rest/methods.md
+                  - Schemas: api/core/backends/requests/rest/schemas.md
+                  - Kwargs: api/core/backends/requests/rest/kwargs.md
+              - SOAP:
+                  - Clients: api/core/backends/requests/soap/clients.md
+                  - Services: api/core/backends/requests/soap/services.md
+                  - Methods: api/core/backends/requests/soap/methods.md
+                  - Settings: api/core/backends/requests/soap/settings.md
+                  - Kwargs: api/core/backends/requests/soap/kwargs.md
+          - HTTPX: api/core/backends/httpx.md
+      - Utils:
+          - Annotations: api/utils/annotations.md
+          - Context Var: api/utils/contextvar.md
+          - Dicts: api/utils/dicts.md
+          - Exceptions: api/utils/exceptions.md
+          - Inspect: api/utils/inspect.md
+          - Lazy: api/utils/lazy.md
+          - Statements: api/utils/statements.md
+          - Typed Dict: api/utils/typed_dict.md
+          - URL: api/utils/url.md
+          - UUID: api/utils/uuid.md
+      - Contrib:
+          - Pydantic:
+              - Models: api/contrib/pydantic/models.md
+              - Utils: api/contrib/pydantic/utils.md
 markdown_extensions:
   - abbr
   - footnotes
@@ -182,7 +247,7 @@ plugins:
             members_order: source
             group_by_category: true
             paths:
-              - /agora
+              - /web_sdk
             preload_modules:
               - __future__
               - pydantic

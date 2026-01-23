@@ -11,7 +11,7 @@ from pydantic.fields import Field, FieldInfo
 from pydantic_core import PydanticUndefined
 from typing_extensions import NotRequired, Required, TypedDict, Unpack, is_typeddict
 
-from web_sdk.contrib.pydantic.model import PydanticModel
+from web_sdk.contrib.pydantic.models import PydanticModel
 from web_sdk.core.fields import RequestFieldInfo
 from web_sdk.core.kwargs import RequestSettingsKwargs
 from web_sdk.types import PartsNames, TExtras, TKwargs

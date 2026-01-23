@@ -1,4 +1,4 @@
-[//]: # (DO NOT CHANGE THIS FILE MANUALLY. Use "make embed-readme" after changing template file)
+[//]: # (DO NOT CHANGE THIS FILE MANUALLY. Use "make embed-readme" after changing README.template.md file)
 <p align="center">
   <img src="docs/resources/brand.svg" width="100%" alt="Web SDK">
 </p>
@@ -8,11 +8,11 @@
 
 <p align="center">
 
-<a href="https://github.com/ExtralaitTeam/web-sdk/actions?query=event%3Apush+branch%3Amaster+workflow%3ACI" target="_blank">
-    <img src="https://img.shields.io/github/actions/workflow/status/ExtralaitTeam/web-sdk/ci.yml?branch=master&logo=github&label=CI" alt="CI">
+<a href="https://github.com/extralait-web/web-sdk/actions?query=event%3Apush+branch%3Amaster+workflow%3ACI" target="_blank">
+    <img src="https://img.shields.io/github/actions/workflow/status/extralait-web/web-sdk/ci.yml?branch=master&logo=github&label=CI" alt="CI">
 </a>
-<a href="https://coverage-badge.samuelcolvin.workers.dev/redirect/ExtralaitTeam/web-sdk" target="_blank">
-    <img src="https://coverage-badge.samuelcolvin.workers.dev/ExtralaitTeam/web-sdk.svg" alt="Coverage">
+<a href="https://coverage-badge.samuelcolvin.workers.dev/redirect/extralait-web/web-sdk" target="_blank">
+    <img src="https://coverage-badge.samuelcolvin.workers.dev/extralait-web/web-sdk.svg" alt="Coverage">
 </a>
 <a href="https://pypi.python.org/pypi/web-sdk" target="_blank">
     <img src="https://img.shields.io/pypi/v/web-sdk.svg" alt="pypi">
@@ -20,11 +20,11 @@
 <a href="https://pepy.tech/project/web-sdk" target="_blank">
     <img src="https://static.pepy.tech/badge/web-sdk/month" alt="downloads">
 </a>
-<a href="https://github.com/ExtralaitTeam/web-sdk" target="_blank">
+<a href="https://github.com/extralait-web/web-sdk" target="_blank">
     <img src="https://img.shields.io/pypi/pyversions/web-sdk.svg" alt="versions">
 </a>
-<a href="https://github.com/ExtralaitTeam/web-sdk" target="_blank">
-    <img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/ExtralaitTeam/web-sdk/master/docs/badge/alfa.json" alt="Web SDK alfa">
+<a href="https://github.com/extralait-web/web-sdk" target="_blank">
+    <img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/extralait-web/web-sdk/master/docs/badge/alfa.json" alt="Web SDK alfa">
 </a>
 
 </p>
@@ -37,38 +37,45 @@
 
 **REST installation**
 
-Install using `pip install -U web-sdk[rest]` or `uv add web-sdk[rest]`
+Install using `pip install web-sdk[rest]` or `uv add web-sdk[rest]`
 
 If you want to use `web_sdk.sdks.rest.XmlResponse`
 
-Install using `pip install -U web-sdk[rest,xml]` or `uv add web-sdk[rest,xml]`
+Install using `pip install web-sdk[rest,xml]` or `uv add web-sdk[rest,xml]`
 
 **SOAP installation**
 
-Install using `pip install -U web-sdk[soap]` or `uv add web-sdk[soap]`
+Install using `pip install web-sdk[soap]` or `uv add web-sdk[soap]`
 
 # Minimal example
 
-**Server code**
+Let's imagine that we have the following data schemas
 ```py
-# docs/examples/home/minimal/server.py
+# docs/examples/home/minimal/dtos.py
 
-from fastapi import FastAPI
 from pydantic import BaseModel
-
-# Create FastAPI app
-app = FastAPI(root_path="/api/v1")
 
 
 # Response short data structure
 class ShortData(BaseModel):
-    pk: int
+    pk: int = 1
     q: bool | None = None
 
 
 # Response data structure
 class Data(ShortData):
     nested: ShortData
+
+```
+
+To make the example simpler, we'll write the server part using [fastapi](https://fastapi.tiangolo.com/).
+```py
+# docs/examples/home/minimal/server.py
+
+from fastapi import FastAPI
+
+# Create FastAPI app
+app = FastAPI(root_path="/api/v1")
 
 
 @app.get("/data/{pk}/info")
@@ -85,26 +92,13 @@ async def get_short_data_info(pk: int, q: bool | None = None) -> ShortData:
 
 ```
 
-**Client code**
+To link with the routes declare in server code, you only need the following client code
 ```py
 # docs/examples/home/minimal/client.py
-
-from pydantic import BaseModel
 
 from web_sdk.core.fields import APath
 from web_sdk.enums import HTTPMethod
 from web_sdk.sdks.rest import Client, ClientService, JsonResponse, Method, Service, Settings, get_res
-
-
-# Response short data structure
-class ShortData(BaseModel):
-    pk: int = 1
-    q: bool | None = None
-
-
-# Response data structure
-class Data(ShortData):
-    nested: ShortData
 
 
 # declare service for group of methods
@@ -129,6 +123,11 @@ class FooClient(Client):
     # set client services as annotation
     service: FooClientService
 
+```
+
+All you have to do next is init the client and call methods you need.
+```py
+# docs/examples/home/minimal/usage.py
 
 # init client settings
 settings = Settings(protocol="http", host="127.0.0.1", api_path="api/v1", port=8000)
@@ -453,7 +452,7 @@ from typing import Generic
 
 from pydantic import BaseModel
 
-from web_sdk.contrib.pydantic.model import PydanticModel
+from web_sdk.contrib.pydantic.models import PydanticModel
 from web_sdk.core.bases.soap import SoapFile
 from web_sdk.sdks.soap import SoapResponse
 from web_sdk.types import TData

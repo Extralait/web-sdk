@@ -7,7 +7,7 @@ from tests.clients.rest import responses as responses
 from tests.clients.rest.clients import RestTestClient
 from tests.clients.rest.methods import RedirectService
 from web_sdk.consts import HTTP_200_OK, HTTP_500_INTERNAL_SERVER_ERROR
-from web_sdk.contrib.pydantic.model import ProxyModel
+from web_sdk.contrib.pydantic.models import ProxyModel
 from web_sdk.core.exceptions import (
     FailureRequestSDKException,
 )

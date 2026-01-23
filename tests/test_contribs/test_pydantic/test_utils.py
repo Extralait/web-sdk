@@ -1,6 +1,6 @@
 import pytest
 
-from web_sdk.contrib.pydantic.model import PydanticModel
+from web_sdk.contrib.pydantic.models import PydanticModel
 from web_sdk.contrib.pydantic.utils import convert
 
 
