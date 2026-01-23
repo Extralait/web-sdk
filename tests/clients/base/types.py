@@ -2,7 +2,7 @@ from typing import Annotated
 
 from typing_extensions import NotRequired, Required, TypedDict
 
-from web_sdk.contrib.pydantic.model import PydanticModel
+from web_sdk.contrib.pydantic.models import PydanticModel
 from web_sdk.core.bases import BaseSDKSettings
 from web_sdk.core.bases.rest.kwargs import RestFieldsKwargs
 from web_sdk.core.context import ContextData

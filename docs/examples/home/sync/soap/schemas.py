@@ -4,7 +4,7 @@ from typing import Generic
 
 from pydantic import BaseModel
 
-from web_sdk.contrib.pydantic.model import PydanticModel
+from web_sdk.contrib.pydantic.models import PydanticModel
 from web_sdk.core.bases.soap import SoapFile
 from web_sdk.sdks.soap import SoapResponse
 from web_sdk.types import TData

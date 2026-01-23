@@ -1,7 +1,7 @@
 import pytest
 from pydantic import PydanticUserError
 
-from web_sdk.contrib.pydantic.model import ProxyModel, PydanticIgnore, PydanticModel
+from web_sdk.contrib.pydantic.models import ProxyModel, PydanticIgnore, PydanticModel
 
 
 def test_ignored_types():

@@ -1,6 +1,6 @@
 """Module with base classes for methods responses."""
 
-from web_sdk.contrib.pydantic.model import PydanticModel
+from web_sdk.contrib.pydantic.models import PydanticModel
 
 
 class SoapResponse(PydanticModel):

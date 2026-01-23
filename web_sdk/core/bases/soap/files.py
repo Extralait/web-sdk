@@ -9,7 +9,7 @@ from pydantic import ModelWrapValidatorHandler, PrivateAttr, model_validator
 from typing_extensions import Self
 from zeep.wsdl.attachments import Attachment
 
-from web_sdk.contrib.pydantic.model import PydanticModel
+from web_sdk.contrib.pydantic.models import PydanticModel
 from web_sdk.utils.cgi import parse_header
 from web_sdk.utils.uuid import get_uuid_chars
 

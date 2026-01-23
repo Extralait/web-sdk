@@ -1,6 +1,6 @@
 from typing import Any
 
-from web_sdk.contrib.pydantic.model import PydanticModel
+from web_sdk.contrib.pydantic.models import PydanticModel
 from web_sdk.core.bases import BaseService
 from web_sdk.core.bases.rest.methods import RestMethod
 from web_sdk.enums import HTTPMethod

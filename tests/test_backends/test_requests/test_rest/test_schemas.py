@@ -5,7 +5,7 @@ import xmltodict
 from requests import Response
 
 from web_sdk.consts import HTTP_200_OK
-from web_sdk.contrib.pydantic.model import PydanticModel
+from web_sdk.contrib.pydantic.models import PydanticModel
 from web_sdk.core.backends.requests.rest.schemas import import_xmltodict
 from web_sdk.sdks.rest import JsonResponse, XmlResponse
 

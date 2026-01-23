@@ -1,6 +1,6 @@
 from typing import Any, Generic
 
-from web_sdk.contrib.pydantic.model import PydanticModel
+from web_sdk.contrib.pydantic.models import PydanticModel
 from web_sdk.core.bases.rest import BaseRestDataResponse
 from web_sdk.types import TData
 

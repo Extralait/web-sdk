@@ -8,7 +8,7 @@ from typing import Any, ClassVar, Generic, Literal, cast, overload
 from pydantic import HttpUrl, model_validator
 
 from web_sdk.consts import HTTP_500_INTERNAL_SERVER_ERROR
-from web_sdk.contrib.pydantic.model import ProxyModel
+from web_sdk.contrib.pydantic.models import ProxyModel
 from web_sdk.core.exceptions import FailureResultSDKException
 from web_sdk.types import TData
 

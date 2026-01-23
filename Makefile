@@ -95,12 +95,12 @@ docs:
 
 .PHONY: docs-serve ## Build and serve the documentation, for local preview
 docs-serve:
-	uv run mkdocs serve --strict
+	uv run mkdocs serve --livereload
 
 .PHONY: embed-readme ## Create README.md from README.template.md
 embed-readme:
 	npx -y embedme --stdout README.template.md > README.md
-	sed -i '1i [//]: # (DO NOT CHANGE THIS FILE MANUALLY. Use "make embed-readme" after changing template file\)' README.md
+	sed -i '1i [//]: # (DO NOT CHANGE THIS FILE MANUALLY. Use "make embed-readme" after changing README.template.md file\)' README.md
 
 .PHONY: help  ## Display this message
 help:
